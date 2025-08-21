@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "value": "eastus"
+    },
+    "resourceGroupName": {
+      "value": "rg-sandbox-devops"
+    },
+    "vmName": {
+      "value": "vm-sandbox-devops"
+    },
+    "vmSize": {
+      "value": "Standard_D2s_v3"
+    },
+    "adminUsername": {
+      "value": "sandboxadmin"
+    },
+    "adminPassword": {
+      "value": "InitialPassword123!"
+    },
+    "keyVaultName": {
+      "value": "kv-sandbox-devops"
+    },
+    "tags": {
+      "value": {
+        "Environment": "Sandbox",
+        "Project": "DevOps-Practice",
+        "Owner": "DevOps-Team",
+        "CostCenter": "Training"
+      }
+    }
+  }
+}

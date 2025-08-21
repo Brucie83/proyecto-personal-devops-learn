@@ -1,0 +1,47 @@
+{
+  "keyVaultName": "kv-sandbox-devops",
+  "location": "eastus",
+  "sku": "standard",
+  "enabledForDeployment": true,
+  "enabledForTemplateDeployment": true,
+  "enabledForDiskEncryption": true,
+  "accessPolicies": [
+    {
+      "objectId": "00000000-0000-0000-0000-000000000001",
+      "tenantId": "00000000-0000-0000-0000-000000000000",
+      "permissions": {
+        "keys": ["get", "list", "create", "delete", "update", "import", "backup", "restore", "recover", "purge"],
+        "secrets": ["get", "list", "set", "delete", "backup", "restore", "recover", "purge"],
+        "certificates": ["get", "list", "create", "delete", "update", "import", "backup", "restore", "recover", "purge"]
+      },
+      "applicationId": null,
+      "userPrincipalName": "fabio.rincon@arroyoconsulting.net"
+    },
+    {
+      "objectId": "00000000-0000-0000-0000-000000000002",
+      "tenantId": "00000000-0000-0000-0000-000000000000",
+      "permissions": {
+        "keys": ["get", "list", "create", "delete", "update", "import", "backup", "restore", "recover", "purge"],
+        "secrets": ["get", "list", "set", "delete", "backup", "restore", "recover", "purge"],
+        "certificates": ["get", "list", "create", "delete", "update", "import", "backup", "restore", "recover", "purge"]
+      },
+      "applicationId": null,
+      "userPrincipalName": "andres.zapata@arroyoconsulting.net"
+    }
+  ],
+  "networkAcls": {
+    "defaultAction": "Allow",
+    "bypass": "AzureServices",
+    "ipRules": [],
+    "virtualNetworkRules": []
+  },
+  "diagnosticSettings": {
+    "enabled": true,
+    "retentionDays": 30
+  },
+  "tags": {
+    "Environment": "Sandbox",
+    "Project": "DevOps-Practice",
+    "Owner": "DevOps-Team"
+  }
+}

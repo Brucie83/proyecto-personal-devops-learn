@@ -1,0 +1,59 @@
+# Archivos de configuración con secretos
+secrets.json
+*.bak
+*.tmp
+
+# Directorios de backup
+backups/
+
+# Archivos de lock
+*.lock
+
+# Directorios de discos simulados
+system/
+data/
+
+# Logs
+*.log
+logs/
+
+# Archivos temporales
+*.tmp
+*.temp
+*~
+
+# Archivos de Docker
+.dockerignore
+
+# Archivos de IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de Terraform (por si acaso)
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+
+# Archivos de Bicep compilados
+*.json
+!parameters.json
+!keyvault.json
+
+# Archivos de Azure
+.azure/
+
+# Archivos de GitHub Actions
+.github/workflows/*.yml.bak
+
+# Archivos de PowerShell
+*.ps1.bak
+
+# Archivos de Bash
+*.sh.bak
