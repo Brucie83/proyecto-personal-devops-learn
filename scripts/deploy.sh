@@ -6,11 +6,12 @@
 set -e  # Salir en caso de error
 
 # Variables de configuración
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
 VM_NAME="sandbox-vm"
 ADMIN_USER="sandboxadmin"
 DOCKER_IMAGE="sandbox-vm:latest"
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
+DOCKERFILE_PATH="$PROJECT_ROOT/docker/Dockerfile.alpine"
 
 # Colores para output
 RED='\033[0;31m'
@@ -25,20 +26,20 @@ log() {
 }
 
 success() {
-    echo -e "${GREEN}✅ $1${NC}"
+    echo -e "${GREEN}[SUCCESS] $1${NC}"
 }
 
 warning() {
-    echo -e "${YELLOW}⚠️  $1${NC}"
+    echo -e "${YELLOW}[WARNING] $1${NC}"
 }
 
 error() {
-    echo -e "${RED}❌ $1${NC}"
+    echo -e "${RED}[ERROR] $1${NC}"
 }
 
 # Función para mostrar ayuda
 show_help() {
-    echo "🚀 Sandbox DevOps - Script de Despliegue"
+    echo "Sandbox DevOps - Script de Despliegue"
     echo ""
     echo "Uso: $0 [OPCIONES]"
     echo ""
@@ -146,13 +147,12 @@ cleanup_existing() {
 build_image() {
     log "Construyendo imagen Docker..."
     
-    if [ ! -f "$PROJECT_ROOT/docker/Dockerfile" ]; then
-        error "Dockerfile no encontrado en $PROJECT_ROOT/docker/"
+    if [ ! -f "$DOCKERFILE_PATH" ]; then
+        error "Dockerfile (Alpine) no encontrado en $DOCKERFILE_PATH"
         exit 1
     fi
     
-    cd "$PROJECT_ROOT/docker"
-    docker build -t "$DOCKER_IMAGE" .
+    docker build -t "$DOCKER_IMAGE" -f "$DOCKERFILE_PATH" "$PROJECT_ROOT/docker"
     
     if [ $? -eq 0 ]; then
         success "Imagen construida exitosamente"
@@ -197,7 +197,7 @@ deploy_vm() {
         -e VM_NAME="$VM_NAME" \
         -e ADMIN_USER="$ADMIN_USER" \
         -e ADMIN_PASSWORD="$ADMIN_PASSWORD" \
-        "$DOCKER_IMAGE"
+        "$DOCKER_IMAGE" tail -f /dev/null
     
     if [ $? -eq 0 ]; then
         success "VM desplegada exitosamente"
@@ -249,14 +249,14 @@ verify_deployment() {
     # Información de red
     echo ""
     echo "5. Información de red:"
-    docker exec "$VM_NAME" hostname -I || error "No se puede obtener IP"
+    docker exec "$VM_NAME" sh -c "hostname -i" || error "No se puede obtener IP"
     
     success "Verificación completada"
 }
 
 # Función principal
 main() {
-    echo "🚀 Iniciando despliegue de Sandbox DevOps..."
+    echo "Iniciando despliegue de Sandbox DevOps..."
     echo ""
     
     # Parsear argumentos
@@ -310,14 +310,14 @@ main() {
     verify_deployment
     
     echo ""
-    success "🎉 Despliegue completado exitosamente!"
+    success "Despliegue completado exitosamente"
     echo ""
-    echo "📋 Información de conexión:"
+    echo "Información de conexión:"
     echo "  SSH: ssh $ADMIN_USER@localhost -p 22"
     echo "  Web: http://localhost:80"
     echo "  SQL: localhost:1433"
     echo ""
-    echo "🔧 Comandos útiles:"
+    echo "Comandos útiles:"
     echo "  Ver logs: docker logs $VM_NAME"
     echo "  Conectar: docker exec -it $VM_NAME bash"
     echo "  Estado: docker ps | grep $VM_NAME"

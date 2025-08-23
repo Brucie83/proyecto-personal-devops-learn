@@ -24,15 +24,15 @@ log() {
 }
 
 success() {
-    echo -e "${GREEN}✅ $1${NC}"
+    echo -e "${GREEN}[SUCCESS] $1${NC}"
 }
 
 warning() {
-    echo -e "${YELLOW}⚠️  $1${NC}"
+    echo -e "${YELLOW}[WARNING] $1${NC}"
 }
 
 error() {
-    echo -e "${RED}❌ $1${NC}"
+    echo -e "${RED}[ERROR] $1${NC}"
 }
 
 # Función para verificar que la VM esté corriendo
@@ -318,7 +318,7 @@ create_install_log() {
 
 # Función principal
 main() {
-    echo "📦 Iniciando instalación de software en Sandbox DevOps..."
+    echo "Iniciando instalación de software en Sandbox DevOps..."
     echo ""
     
     # Verificar que la VM esté corriendo
@@ -339,17 +339,17 @@ main() {
     verify_installation
     
     echo ""
-    success "🎉 Instalación de software completada exitosamente!"
+    success "Instalación de software completada exitosamente"
     echo ""
-    echo "📋 Software instalado:"
-    echo "  ✅ Java 11"
-    echo "  ✅ Node.js 18"
-    echo "  ✅ Git"
-    echo "  ✅ LibreOffice (Office simulado)"
-    echo "  ✅ VSCode"
-    echo "  ✅ Herramientas adicionales"
+    echo "Software instalado:"
+    echo "  - Java 11"
+    echo "  - Node.js 18"
+    echo "  - Git"
+    echo "  - LibreOffice (Office simulado)"
+    echo "  - VSCode"
+    echo "  - Herramientas adicionales"
     echo ""
-    echo "🔧 Comandos útiles:"
+    echo "Comandos útiles:"
     echo "  Conectar: docker exec -it $VM_NAME bash"
     echo "  Ver logs: docker exec $VM_NAME cat /var/log/install/software-install.log"
     echo "  Verificar Java: docker exec $VM_NAME java -version"

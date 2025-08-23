@@ -25,20 +25,20 @@ log() {
 }
 
 success() {
-    echo -e "${GREEN}✅ $1${NC}"
+    echo -e "${GREEN}[SUCCESS] $1${NC}"
 }
 
 warning() {
-    echo -e "${YELLOW}⚠️  $1${NC}"
+    echo -e "${YELLOW}[WARNING] $1${NC}"
 }
 
 error() {
-    echo -e "${RED}❌ $1${NC}"
+    echo -e "${RED}[ERROR] $1${NC}"
 }
 
 # Función para mostrar ayuda
 show_help() {
-    echo "🔄 Sandbox DevOps - Script de Rotación de Credenciales"
+    echo "Sandbox DevOps - Script de Rotación de Credenciales"
     echo ""
     echo "Uso: $0 [OPCIONES]"
     echo ""
@@ -246,8 +246,8 @@ verify_rotation() {
     echo "1. Archivo de secretos:"
     if [ -f "$SECRETS_FILE" ]; then
         echo "  ✅ Archivo existe"
-        echo "  📅 Última rotación: $(jq -r '.lastPasswordRotation' "$SECRETS_FILE")"
-        echo "  🔑 Contraseña: $(jq -r '.adminPassword' "$SECRETS_FILE" | head -c 10)..."
+        echo "  Última rotación: $(jq -r '.lastPasswordRotation' "$SECRETS_FILE")"
+        echo "  Contraseña: $(jq -r '.adminPassword' "$SECRETS_FILE" | head -c 10)..."
     else
         echo "  ❌ Archivo no existe"
     fi
@@ -257,8 +257,8 @@ verify_rotation() {
     echo "2. KeyVault:"
     if [ -f "$KEYVAULT_FILE" ]; then
         echo "  ✅ Archivo existe"
-        echo "  📅 Última actualización: $(jq -r '.lastUpdated' "$KEYVAULT_FILE" 2>/dev/null || echo 'N/A')"
-        echo "  👥 Usuarios autorizados:"
+        echo "  Última actualización: $(jq -r '.lastUpdated' "$KEYVAULT_FILE" 2>/dev/null || echo 'N/A')"
+        echo "  Usuarios autorizados:"
         jq -r '.accessPolicies[].userPrincipalName' "$KEYVAULT_FILE" 2>/dev/null || echo "  - N/A"
     else
         echo "  ❌ Archivo no existe"
@@ -378,16 +378,16 @@ main() {
     verify_rotation
     
     echo ""
-    success "🎉 Rotación de credenciales completada exitosamente!"
+    success "Rotación de credenciales completada exitosamente"
     echo ""
-    echo "📋 Resumen:"
+    echo "Resumen:"
     echo "  ✅ Nueva contraseña generada"
     echo "  ✅ Archivo de secretos actualizado"
     echo "  ✅ KeyVault actualizado"
     echo "  ✅ Contraseña actualizada en la VM"
     echo ""
-    echo "🔐 Nueva contraseña: ${new_password:0:10}..."
-    echo "📅 Fecha de rotación: $(date)"
+    echo "Nueva contraseña: ${new_password:0:10}..."
+    echo "Fecha de rotación: $(date)"
     echo ""
     echo "⚠️  IMPORTANTE: Guarde la nueva contraseña en un lugar seguro"
 }

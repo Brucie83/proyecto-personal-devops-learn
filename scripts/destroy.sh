@@ -24,20 +24,20 @@ log() {
 }
 
 success() {
-    echo -e "${GREEN}✅ $1${NC}"
+    echo -e "${GREEN}[SUCCESS] $1${NC}"
 }
 
 warning() {
-    echo -e "${YELLOW}⚠️  $1${NC}"
+    echo -e "${YELLOW}[WARNING] $1${NC}"
 }
 
 error() {
-    echo -e "${RED}❌ $1${NC}"
+    echo -e "${RED}[ERROR] $1${NC}"
 }
 
 # Función para mostrar ayuda
 show_help() {
-    echo "🧹 Sandbox DevOps - Script de Destrucción de Infraestructura"
+    echo "Sandbox DevOps - Script de Destrucción de Infraestructura"
     echo ""
     echo "Uso: $0 [OPCIONES]"
     echo ""
@@ -73,7 +73,7 @@ check_locks() {
 # Función para confirmar destrucción
 confirm_destruction() {
     echo ""
-    echo "🧹 ¿Está seguro de que desea destruir la infraestructura?"
+    echo "¿Está seguro de que desea destruir la infraestructura?"
     echo "   Esto eliminará:"
     echo "   - Contenedor Docker: $VM_NAME"
     echo "   - Imagen Docker: $DOCKER_IMAGE"
@@ -208,18 +208,18 @@ verify_cleanup() {
     # Verificar contenedor
     echo "1. Contenedor:"
     if docker ps -a --format "table {{.Names}}" | grep -q "^$VM_NAME$"; then
-        echo "  ❌ Contenedor $VM_NAME aún existe"
+        echo "  [ERROR] Contenedor $VM_NAME aún existe"
     else
-        echo "  ✅ Contenedor $VM_NAME eliminado"
+        echo "  [SUCCESS] Contenedor $VM_NAME eliminado"
     fi
     
     # Verificar imagen
     echo ""
     echo "2. Imagen:"
     if docker images --format "table {{.Repository}}" | grep -q "^$DOCKER_IMAGE$"; then
-        echo "  ❌ Imagen $DOCKER_IMAGE aún existe"
+        echo "  [ERROR] Imagen $DOCKER_IMAGE aún existe"
     else
-        echo "  ✅ Imagen $DOCKER_IMAGE eliminada"
+        echo "  [SUCCESS] Imagen $DOCKER_IMAGE eliminada"
     fi
     
     # Verificar directorios
@@ -228,9 +228,9 @@ verify_cleanup() {
     local disk_dirs=("$PROJECT_ROOT/system" "$PROJECT_ROOT/data")
     for dir in "${disk_dirs[@]}"; do
         if [ -d "$dir" ]; then
-            echo "  ❌ Directorio $dir aún existe"
+            echo "  [ERROR] Directorio $dir aún existe"
         else
-            echo "  ✅ Directorio $dir eliminado"
+            echo "  [SUCCESS] Directorio $dir eliminado"
         fi
     done
     
@@ -261,28 +261,28 @@ generate_report() {
     echo "Limpieza: $([ "$CLEAN" = true ] && echo "Completa" || echo "Parcial")"
     echo ""
     
-    success "🎉 Destrucción de infraestructura completada exitosamente!"
+    success "Destrucción de infraestructura completada exitosamente"
     echo ""
-    echo "📋 Resumen de acciones:"
-    echo "  ✅ Contenedor detenido y eliminado"
-    echo "  ✅ Imagen Docker eliminada"
-    echo "  ✅ Directorios de discos limpiados"
-    echo "  ✅ Archivos temporales eliminados"
-    echo "  ✅ Logs eliminados"
+    echo "Resumen de acciones:"
+    echo "  [SUCCESS] Contenedor detenido y eliminado"
+    echo "  [SUCCESS] Imagen Docker eliminada"
+    echo "  [SUCCESS] Directorios de discos limpiados"
+    echo "  [SUCCESS] Archivos temporales eliminados"
+    echo "  [SUCCESS] Logs eliminados"
     
     if [ "$CLEAN" = true ]; then
-        echo "  ✅ Archivos de configuración eliminados"
-        echo "  ✅ Backups eliminados"
+        echo "  [SUCCESS] Archivos de configuración eliminados"
+        echo "  [SUCCESS] Backups eliminados"
     fi
     
     echo ""
-    echo "🔧 Para recrear la infraestructura:"
+    echo "Para recrear la infraestructura:"
     echo "  ./scripts/deploy.sh"
 }
 
 # Función principal
 main() {
-    echo "🧹 Iniciando destrucción de infraestructura..."
+    echo "Iniciando destrucción de infraestructura..."
     echo ""
     
     # Parsear argumentos

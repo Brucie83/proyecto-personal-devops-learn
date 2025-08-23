@@ -22,20 +22,20 @@ log() {
 }
 
 success() {
-    echo -e "${GREEN}✅ $1${NC}"
+    echo -e "${GREEN}[SUCCESS] $1${NC}"
 }
 
 warning() {
-    echo -e "${YELLOW}⚠️  $1${NC}"
+    echo -e "${YELLOW}[WARNING] $1${NC}"
 }
 
 error() {
-    echo -e "${RED}❌ $1${NC}"
+    echo -e "${RED}[ERROR] $1${NC}"
 }
 
 # Función para mostrar ayuda
 show_help() {
-    echo "🔒 Sandbox DevOps - Script de Verificación de Locks"
+    echo "Sandbox DevOps - Script de Verificación de Locks"
     echo ""
     echo "Uso: $0 [OPCIONES]"
     echo ""
@@ -202,10 +202,10 @@ generate_report() {
     echo "Verificaciones fallidas: $failed_checks/$total_checks"
     
     if [ $failed_checks -eq 0 ]; then
-        success "✅ Todas las verificaciones pasaron. No hay locks activos."
+        success "Todas las verificaciones pasaron. No hay locks activos."
         return 0
     else
-        warning "⚠️  Se encontraron $failed_checks locks activos."
+        warning "Se encontraron $failed_checks locks activos."
         if [ "$FORCE" = false ]; then
             echo ""
             echo "Para ignorar los locks, use: $0 --force"
@@ -216,7 +216,7 @@ generate_report() {
 
 # Función principal
 main() {
-    echo "🔒 Iniciando verificación de locks..."
+    echo "Iniciando verificación de locks..."
     echo ""
     
     # Parsear argumentos
