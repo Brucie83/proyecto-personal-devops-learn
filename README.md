@@ -1,16 +1,16 @@
-# 🚀 Proyecto Personal DevOps - Entorno de Aprendizaje
+# Proyecto Personal DevOps - Entorno de Aprendizaje
 
 Este proyecto simula un entorno completo de DevOps usando tecnologías gratuitas y locales, enfocado en el aprendizaje práctico de Azure Bicep, Docker y CI/CD.
 
-## 📋 Objetivos del Proyecto
+## Objetivos del Proyecto
 
-- ✅ Validar capacidad de entender retos técnicos de DevOps
-- ✅ Validar habilidad para desplegar infraestructura mediante código (IaC con Bicep)
-- ✅ Validar habilidad para crear pipelines que instalen software en VMs
-- ✅ Validar capacidad para trabajar con secretos y rotación de credenciales
-- ✅ Validar habilidad para usar scripting (PowerShell/Bash)
+- Validar capacidad de entender retos técnicos de DevOps
+- Validar habilidad para desplegar infraestructura mediante código (IaC con Bicep)
+- Validar habilidad para crear pipelines que instalen software en VMs
+- Validar capacidad para trabajar con secretos y rotación de credenciales
+- Validar habilidad para usar scripting (PowerShell/Bash)
 
-## 🏗️ Arquitectura del Sandbox
+## Arquitectura del Sandbox
 
 ### Infraestructura Simulada
 - **VM Simulada**: Contenedor Docker con Ubuntu Server
@@ -25,7 +25,7 @@ Este proyecto simula un entorno completo de DevOps usando tecnologías gratuitas
 4. **Secretos**: `secrets.json` (simulando KeyVault)
 5. **Locks**: Sistema de protección contra eliminación
 
-## 🚀 Cómo Levantar el Proyecto
+## Cómo Levantar el Proyecto
 
 ### Prerrequisitos
 - Docker instalado
@@ -66,7 +66,7 @@ code --version
 git --version
 ```
 
-## 🔧 Comandos de Validación
+## Comandos de Validación
 
 ### Verificar Infraestructura
 ```bash
@@ -123,7 +123,7 @@ cat keyvault.json
 ls -la *.lock
 ```
 
-## 🔒 Sistema de Locks
+## Sistema de Locks
 
 ### Crear Lock
 ```bash
@@ -140,7 +140,7 @@ touch INFRASTRUCTURE.lock
 rm INFRASTRUCTURE.lock
 ```
 
-## 🔄 Rotación de Credenciales
+## Rotación de Credenciales
 
 ### Ejecutar Rotación Manual
 ```bash
@@ -152,7 +152,7 @@ rm INFRASTRUCTURE.lock
 cat secrets.json | jq '.adminPassword'
 ```
 
-## 🧹 Limpieza
+## Limpieza
 
 ### Limpieza Segura (verifica locks)
 ```bash
@@ -164,7 +164,7 @@ cat secrets.json | jq '.adminPassword'
 ./scripts/destroy.sh --force
 ```
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 proyecto-personal-devops-learn/
@@ -192,7 +192,7 @@ proyecto-personal-devops-learn/
 └── README.md
 ```
 
-## 🔍 Troubleshooting
+## Troubleshooting
 
 ### Problemas Comunes
 
@@ -227,7 +227,7 @@ docker logs sandbox-vm
 docker exec sandbox-vm cat /var/log/install/install.log
 ```
 
-## 📝 Notas de Desarrollo
+## Notas de Desarrollo
 
 - Este sandbox simula un entorno real de Azure
 - Los archivos `.bicep` no se aplican realmente, pero mantienen sintaxis válida
@@ -235,7 +235,7 @@ docker exec sandbox-vm cat /var/log/install/install.log
 - El sistema de locks previene eliminación accidental
 - Todos los scripts son idempotentes (seguros de ejecutar múltiples veces)
 
-## 🎯 Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 - **IaC**: Azure Bicep (simulado)
 - **Contenedores**: Docker
@@ -244,7 +244,7 @@ docker exec sandbox-vm cat /var/log/install/install.log
 - **Sistema Operativo**: Ubuntu Server
 - **Software**: Java, Node.js, Git, LibreOffice, VSCode
 
-## 🤝 Contribución
+## Contribución
 
 1. Fork el proyecto
 2. Crea una rama para tu feature
@@ -252,6 +252,6 @@ docker exec sandbox-vm cat /var/log/install/install.log
 4. Push a la rama
 5. Abre un Pull Request
 
-## 📄 Licencia
+## Licencia
 
 Este proyecto es para fines educativos y de práctica personal.
