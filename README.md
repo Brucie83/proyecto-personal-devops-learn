@@ -62,7 +62,7 @@ graph TB
     G[Grafana :3001] --> F
 ```
 
-## 🚀 Inicio Rápido
+## Inicio Rápido
 
 ### Prerrequisitos
 - Docker y Docker Compose instalados
@@ -105,7 +105,7 @@ docker-compose -f app/docker-compose.yml logs -f
 docker-compose -f app/docker-compose.yml ps
 ```
 
-## 🔧 Funcionalidades de la Aplicación
+## Funcionalidades de la Aplicación
 
 ### Gestión de Usuarios
 - **Registro**: Crear nueva cuenta de usuario
@@ -126,7 +126,7 @@ docker-compose -f app/docker-compose.yml ps
 - **Health Checks**: Endpoints de salud para todos los servicios
 - **Logs**: Logging estructurado para debugging
 
-## 🧪 Testing y Validación
+## Testing y Validación
 
 ### Verificar Servicios
 ```bash
@@ -222,7 +222,7 @@ proyecto-personal-devops-learn/
 └── README.md                      # Este archivo
 ```
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Problemas Comunes
 
@@ -280,7 +280,7 @@ docker-compose -f app/docker-compose.yml logs postgres
 docker-compose -f app/docker-compose.yml logs -f --tail=100
 ```
 
-## 🚀 Despliegue en Producción
+## Despliegue en Producción
 
 ### Variables de Entorno
 ```bash
@@ -297,7 +297,7 @@ export REDIS_URL="redis://host:6379/0"
 - Implementar backup de base de datos
 - Monitorear logs de seguridad
 
-## 🛠️ Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 ### Backend
 - **Python 3.11**: Lenguaje de programación
@@ -321,7 +321,7 @@ export REDIS_URL="redis://host:6379/0"
 - **Grafana**: Dashboards
 - **GitHub Actions**: CI/CD
 
-## 🤝 Contribución
+## Contribución
 
 1. Fork el proyecto
 2. Crea una rama para tu feature (`git checkout -b feature/nueva-funcionalidad`)
@@ -329,7 +329,7 @@ export REDIS_URL="redis://host:6379/0"
 4. Push a la rama (`git push origin feature/nueva-funcionalidad`)
 5. Abre un Pull Request
 
-## 📄 Licencia
+## Licencia
 
 Este proyecto es para fines educativos y de práctica personal en DevOps.
 
