@@ -11,7 +11,7 @@ PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
 VM_NAME="sandbox-vm"
 ADMIN_USER="sandboxadmin"
 DOCKER_IMAGE="sandbox-vm:latest"
-DOCKERFILE_PATH="$PROJECT_ROOT/docker/Dockerfile.alpine"
+DOCKERFILE_PATH="$PROJECT_ROOT/docker/Dockerfile"
 
 # Colores para output
 RED='\033[0;31m'

@@ -1,0 +1,41 @@
+/* @tailwind directives are processed by PostCSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+.btn-primary {
+  @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+}
+
+.btn-secondary {
+  @apply bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+}
+
+.input-field {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent;
+}
+
+.card {
+  @apply bg-white rounded-lg shadow-md p-6;
+}
+
+.task-card {
+  @apply bg-white rounded-lg shadow-sm border border-gray-200 p-4 hover:shadow-md transition-shadow duration-200;
+}
+
+.task-completed {
+  @apply opacity-60 line-through;
+}
+
+.priority-high {
+  @apply border-l-4 border-red-500;
+}
+
+.priority-medium {
+  @apply border-l-4 border-yellow-500;
+}
+
+.priority-low {
+  @apply border-l-4 border-green-500;
+}
