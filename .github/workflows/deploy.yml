@@ -37,7 +37,7 @@ jobs:
     - name: 📋 Validar Docker Compose
       run: |
         cd app
-        docker-compose config
+        docker compose config
         echo "✅ Docker Compose válido"
         
     - name: 🔍 Validar archivos de configuración
@@ -106,7 +106,7 @@ jobs:
       run: |
         cd app
         cp .env.example .env
-        docker-compose up -d
+        docker compose up -d
         
     - name: ⏳ Wait for services
       run: |
@@ -119,7 +119,7 @@ jobs:
         echo "Checking service health..."
         
         # Check if containers are running
-        docker-compose ps
+        docker compose ps
         
         # Test API endpoints
         curl -f http://localhost:8080/api/health || exit 1
@@ -128,7 +128,7 @@ jobs:
     - name: 🧹 Cleanup
       run: |
         cd app
-        docker-compose down -v
+        docker compose down -v
 
   # Job 5: Deploy (solo en main branch)
   deploy:
