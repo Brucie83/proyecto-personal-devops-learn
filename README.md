@@ -333,6 +333,3 @@ export REDIS_URL="redis://host:6379/0"
 
 Este proyecto es para fines educativos y de práctica personal en DevOps.
 
----
-
-**¡Desarrollado con ❤️ para demostrar principios DevOps modernos!**
